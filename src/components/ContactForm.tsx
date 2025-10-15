@@ -9,6 +9,7 @@ interface FormData {
   email: string
   phone: string
   service: string
+  location: string
   message: string
 }
 
@@ -20,12 +21,20 @@ const services = [
   "Γενική Επικοινωνία"
 ]
 
+const locations = [
+  "Λευκωσία",
+  "Λάρνακα", 
+  "Λεμεσός",
+  "Αμμόχωστος"
+]
+
 export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     phone: '',
     service: '',
+    location: '',
     message: ''
   })
   
@@ -63,6 +72,7 @@ export default function ContactForm() {
           email: '',
           phone: '',
           service: '',
+          location: '',
           message: ''
         })
       } else {
@@ -160,6 +170,28 @@ export default function ContactForm() {
               ))}
             </select>
           </div>
+        </div>
+
+        {/* Location Row */}
+        <div>
+          <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-2">
+            Περιοχή *
+          </label>
+          <select
+            id="location"
+            name="location"
+            value={formData.location}
+            onChange={handleInputChange}
+            required
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+          >
+            <option value="">Επιλέξτε περιοχή</option>
+            {locations.map((location) => (
+              <option key={location} value={location}>
+                {location}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* Message */}

@@ -6,6 +6,7 @@ interface ContactFormData {
   email: string
   phone: string
   service: string
+  location: string
   message: string
 }
 
@@ -21,10 +22,10 @@ export async function POST(request: NextRequest) {
 
     const resend = new Resend(process.env.RESEND_API_KEY)
     const body: ContactFormData = await request.json()
-    const { name, email, phone, service, message } = body
+    const { name, email, phone, service, location, message } = body
 
     // Validate required fields
-    if (!name || !email || !service || !message) {
+    if (!name || !email || !service || !location || !message) {
       return NextResponse.json(
         { error: 'Παρακαλώ συμπληρώστε όλα τα απαιτούμενα πεδία' },
         { status: 400 }
@@ -58,6 +59,10 @@ export async function POST(request: NextRequest) {
               <tr>
                 <td style="padding: 8px 0; font-weight: bold; color: #374151;">Υπηρεσία:</td>
                 <td style="padding: 8px 0; color: #1f2937;">${service}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #374151;">Περιοχή:</td>
+                <td style="padding: 8px 0; color: #1f2937;">${location}</td>
               </tr>
             </table>
           </div>
@@ -109,6 +114,10 @@ export async function POST(request: NextRequest) {
                 <tr>
                   <td style="padding: 8px 0; font-weight: bold; color: #374151;">Υπηρεσία:</td>
                   <td style="padding: 8px 0; color: #1f2937;">${service}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; font-weight: bold; color: #374151;">Περιοχή:</td>
+                  <td style="padding: 8px 0; color: #1f2937;">${location}</td>
                 </tr>
               </table>
               <div style="margin-top: 15px;">

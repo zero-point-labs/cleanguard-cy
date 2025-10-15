@@ -8,9 +8,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { R2_ASSETS } from '@/lib/r2-config'
 
 const navigation = [
-  { name: 'Οι Υπηρεσίες μας', href: '#services' },
-  { name: 'Η Ομάδα μας', href: '#team' },
-  { name: 'Eγκυκλοπαίδεια', href: '#encyclopedia' },
+  { name: 'Οι Υπηρεσίες μας', href: '/services' },
+  { name: 'Η Ομάδα μας', href: '/about' },
+  { name: 'Eγκυκλοπαίδεια', href: '/encyclopedia' },
 ]
 
 export default function Header() {
