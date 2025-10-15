@@ -15,11 +15,11 @@ const benefits = [
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen lg:h-screen flex items-center justify-center overflow-hidden pt-20 lg:pt-24">
+    <section className="relative min-h-[65vh] sm:min-h-[70vh] lg:h-screen flex items-center justify-center overflow-hidden pt-16 lg:pt-24">
       {/* Full-width background video */}
       <div className="absolute inset-0 w-full h-full">
         <video
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-[75%_center] lg:object-center"
           autoPlay
           loop
           muted
@@ -84,22 +84,33 @@ export default function Hero() {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 pt-20 sm:pt-24 lg:pt-32">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-20">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left content */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-7 text-center lg:text-left"
+            className="col-span-full lg:col-span-7 text-center lg:text-left"
           >
+            {/* Cyprus Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.8 }}
+              className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5 mb-3 border border-white/20"
+            >
+              <span className="text-base sm:text-lg">🇨🇾</span>
+              <span className="text-xs sm:text-sm font-medium text-white">CY Pest Control</span>
+            </motion.div>
+
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-4 sm:mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-3 sm:mb-4 lg:mb-6"
             >
-              Απαλλαγείτε από τα Παράσιτα με την
+              Καθαρός και Ασφαλής Χώρος με την
               <span className="block mt-1 sm:mt-2">
                 <span className="relative inline-block">
                   <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-green-500 bg-clip-text text-transparent">Clean Guard</span>
@@ -118,17 +129,17 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-base sm:text-lg lg:text-xl text-gray-200 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0"
+              className="text-base sm:text-lg lg:text-xl text-gray-200 mb-4 sm:mb-6 lg:mb-8 max-w-2xl mx-auto lg:mx-0"
             >
-              Η Cleanguard ειναι διπλα σας για ενα καθαρο και ασφαλη χωρο. Επαγγελματικές υπηρεσίες απεντόμωσης που εξαλείφουν ανεπιθύμητους επισκέπτες και διατηρούν το χώρο σας ασφαλή.
+              Έμπειροι τεχνικοί, σύγχρονες μέθοδοι και άμεση ανταπόκριση για την προστασία του χώρου σας.
             </motion.p>
 
-            {/* CTA buttons */}
+            {/* CTA button */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12 justify-center lg:justify-start"
+              className="flex justify-center lg:justify-start mb-6 sm:mb-8 lg:mb-12"
             >
               <Link
                 href="/contact"
@@ -137,12 +148,6 @@ export default function Hero() {
                 <span>Επικοινωνία</span>
                 <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link
-                href="#services"
-                className="inline-flex items-center justify-center space-x-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-medium text-white hover:bg-white/20 transition-all duration-200"
-              >
-                <span>Οι Υπηρεσίες μας</span>
-              </Link>
             </motion.div>
 
             {/* Benefits grid - redesigned for mobile */}
@@ -150,7 +155,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 max-w-lg mx-auto lg:max-w-none lg:mx-0"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-1 sm:gap-2 lg:gap-3 max-w-lg mx-auto lg:max-w-none lg:mx-0"
             >
               {benefits.map((benefit, index) => (
                 <motion.div
@@ -167,12 +172,12 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right side - Redesigned cards for mobile */}
+          {/* Right side - Redesigned cards for mobile - Hidden on mobile */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="lg:col-span-5 mt-8 lg:mt-0"
+            className="hidden lg:block lg:col-span-5 mt-8 lg:mt-0"
           >
             {/* Main feature card with video reference */}
             <motion.div
