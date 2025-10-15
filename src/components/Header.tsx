@@ -21,22 +21,22 @@ export default function Header() {
       <header className="fixed w-full top-0 z-50 bg-white shadow-lg">
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Top">
           {/* Mobile Layout */}
-          <div className="flex lg:hidden w-full items-center justify-between py-6">
+          <div className="flex lg:hidden w-full items-center justify-between py-3">
             {/* Left side - Logo and Company Name */}
-            <div className="flex items-center space-x-3 flex-1">
-              <Link href="/" className="flex items-center space-x-3">
-                <div className="h-10 w-10 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0">
+            <div className="flex items-center space-x-2 flex-1">
+              <Link href="/" className="flex items-center space-x-2">
+                <div className="h-8 w-8 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0">
                   <Image
                     src={R2_ASSETS.logo}
                     alt="Clean Guard Logo"
-                    width={40}
-                    height={40}
+                    width={32}
+                    height={32}
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-base font-bold text-gray-900 leading-tight">Clean Guard</span>
-                  <span className="text-sm text-gray-600 leading-tight">Pest Control Cyprus</span>
+                  <span className="text-sm font-bold text-gray-900 leading-tight">Clean Guard</span>
+                  <span className="text-xs text-gray-600 leading-tight">Pest Control Cyprus</span>
                 </div>
               </Link>
             </div>
@@ -44,14 +44,14 @@ export default function Header() {
             {/* Right side - Menu button */}
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-xl p-3 bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 transition-all duration-200 touch-manipulation flex-shrink-0"
+              className="inline-flex items-center justify-center rounded-lg p-2 bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 transition-all duration-200 touch-manipulation flex-shrink-0"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <span className="sr-only">Open main menu</span>
               {mobileMenuOpen ? (
-                <X className="block h-5 w-5" aria-hidden="true" />
+                <X className="block h-4 w-4" aria-hidden="true" />
               ) : (
-                <Menu className="block h-5 w-5" aria-hidden="true" />
+                <Menu className="block h-4 w-4" aria-hidden="true" />
               )}
             </button>
           </div>

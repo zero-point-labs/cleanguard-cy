@@ -60,8 +60,28 @@ const values = [
 export default function AboutUs() {
   const ref = React.useRef(null)
   const imageRef = React.useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
-  const isImageInView = useInView(imageRef, { once: true, amount: 0.3 })
+  const [forceVisible, setForceVisible] = React.useState(false)
+  const isInView = useInView(ref, { 
+    once: true, 
+    amount: 0.1,
+    margin: "0px 0px -100px 0px"
+  })
+  const isImageInView = useInView(imageRef, { 
+    once: true, 
+    amount: 0.1,
+    margin: "0px 0px -100px 0px"
+  })
+
+  // Fallback for mobile devices where intersection observer might not work properly
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setForceVisible(true)
+    }, 2000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const shouldAnimate = isInView || forceVisible
+  const shouldAnimateImage = isImageInView || forceVisible
   
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -115,13 +135,13 @@ export default function AboutUs() {
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16 lg:mb-20"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            animate={shouldAnimate ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.4 }}
             className="inline-flex items-center justify-center space-x-2 rounded-full bg-gradient-to-r from-green-100 to-emerald-100 px-4 py-2 mb-6"
           >
@@ -147,7 +167,7 @@ export default function AboutUs() {
           {/* Left content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            animate={shouldAnimate ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
@@ -174,7 +194,7 @@ export default function AboutUs() {
                 <motion.div
                   key={value.title}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                   className="group p-4 bg-gradient-to-br from-gray-50 to-white rounded-2xl border border-gray-100 hover:border-green-200 hover:shadow-lg transition-all"
                 >
@@ -202,7 +222,7 @@ export default function AboutUs() {
           <motion.div
             ref={imageRef}
             initial={{ opacity: 0, x: 30 }}
-            animate={isImageInView ? { opacity: 1, x: 0 } : {}}
+            animate={shouldAnimateImage ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative"
           >
@@ -242,7 +262,7 @@ export default function AboutUs() {
                 {/* Image overlay with stats */}
                 <motion.div
                   initial={{ opacity: 0 }}
-                  animate={isImageInView ? { opacity: 1 } : {}}
+                  animate={shouldAnimateImage ? { opacity: 1 } : {}}
                   transition={{ duration: 0.6, delay: 0.6 }}
                   className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-8"
                 >
@@ -299,7 +319,7 @@ export default function AboutUs() {
         {/* Stats section */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8"
         >
@@ -307,7 +327,7 @@ export default function AboutUs() {
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              animate={shouldAnimate ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
               whileHover={{ y: -5 }}
               className="group relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all"

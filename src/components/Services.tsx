@@ -82,7 +82,22 @@ const services = [
 
 export default function Services() {
   const ref = React.useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
+  const [forceVisible, setForceVisible] = React.useState(false)
+  const isInView = useInView(ref, { 
+    once: true, 
+    amount: 0.1,
+    margin: "0px 0px -100px 0px"
+  })
+
+  // Fallback for mobile devices where intersection observer might not work properly
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setForceVisible(true)
+    }, 1000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const shouldAnimate = isInView || forceVisible
 
   return (
     <section ref={ref} id="services" className="relative py-20 sm:py-24 lg:py-32 bg-gradient-to-b from-gray-50 via-white to-gray-50 overflow-hidden">
@@ -138,13 +153,13 @@ export default function Services() {
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16 lg:mb-20"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            animate={shouldAnimate ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.4 }}
             className="inline-flex items-center justify-center space-x-2 rounded-full bg-gradient-to-r from-green-100 to-emerald-100 px-4 py-2 mb-6"
           >
@@ -171,7 +186,7 @@ export default function Services() {
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
               className="group relative"
             >
@@ -202,7 +217,7 @@ export default function Services() {
                       <motion.div
                         key={feature}
                         initial={{ opacity: 0, x: -20 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        animate={shouldAnimate ? { opacity: 1, x: 0 } : {}}
                         transition={{ delay: 0.5 + index * 0.1 + idx * 0.05 }}
                         className="flex items-start space-x-3"
                       >
@@ -236,7 +251,7 @@ export default function Services() {
         {/* Bottom section with trust indicators */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-20 text-center"
         >
@@ -261,7 +276,7 @@ export default function Services() {
           
           <motion.div
             initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
+            animate={shouldAnimate ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 1 }}
             className="mt-10"
           >
