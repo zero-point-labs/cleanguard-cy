@@ -189,7 +189,7 @@ export default function AboutUs() {
             </div>
 
             {/* Values grid */}
-            <div className="grid grid-cols-2 gap-4 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
               {values.map((value, index) => (
                 <motion.div
                   key={value.title}
@@ -316,12 +316,12 @@ export default function AboutUs() {
           </motion.div>
         </div>
 
-        {/* Stats section */}
+        {/* Stats section - Hidden on mobile */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8"
+          className="hidden md:grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8"
         >
           {stats.map((stat, index) => (
             <motion.div

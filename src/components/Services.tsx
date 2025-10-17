@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Bug, Home, Building2, Shield, CheckCircle, ArrowRight, Star, Zap } from 'lucide-react'
+import { Bug, Shield, CheckCircle, ArrowRight, Star, Zap, Droplets, Mouse } from 'lucide-react'
 import Link from 'next/link'
 
 const services = [
@@ -25,7 +25,7 @@ const services = [
     accentColor: "text-green-600"
   },
   {
-    icon: Shield,
+    icon: Droplets,
     title: "Απολύμανση",
     slug: "apolymansi",
     description: "Παρέχουμε απολύμανση με πιστοποιημένα σκευάσματα τελευταίας γενιάς, δημιουργώντας φράγμα προστασίας για κάθε χώρο.",
@@ -43,7 +43,7 @@ const services = [
     accentColor: "text-emerald-600"
   },
   {
-    icon: Home,
+    icon: Mouse,
     title: "Μυοκτονία",
     slug: "myoktonia",
     description: "Προσφέρουμε οικολογικές λύσεις για τρωκτικά με σύγχρονες τεχνικές και ασφαλή, πιστοποιημένα προϊόντα.",
@@ -61,7 +61,7 @@ const services = [
     accentColor: "text-lime-600"
   },
   {
-    icon: Building2,
+    icon: Shield,
     title: "Απωθητικά",
     slug: "apothitika",
     description: "Εφαρμόζουμε φυσικά και χημικά απωθητικά για ζώα και έντομα σε σπίτια, επιχειρήσεις και κήπους.",
@@ -167,7 +167,7 @@ export default function Services() {
             <span className="text-sm font-semibold text-green-900">Επαγγελματικές Υπηρεσίες Απεντόμωσης</span>
           </motion.div>
           
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-6">
             Οι Υπηρεσίες μας
             <span className="block mt-2 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
               Για κάθε Πρόβλημα Παρασίτων
@@ -196,16 +196,16 @@ export default function Services() {
                 
                 {/* Card content */}
                 <div className="relative p-8 lg:p-10">
-                  {/* Header with icon */}
-                  <div className="flex items-start space-x-5 mb-6">
+                  {/* Header with icon - Mobile: centered above, Desktop: side by side */}
+                  <div className="flex flex-col md:flex-row md:items-start md:space-x-5 mb-6">
                     <motion.div
                       whileHover={{ rotate: 360, scale: 1.1 }}
                       transition={{ duration: 0.6 }}
-                      className={`flex-shrink-0 w-16 h-16 ${service.iconBg} rounded-2xl flex items-center justify-center`}
+                      className={`flex-shrink-0 w-16 h-16 ${service.iconBg} rounded-2xl flex items-center justify-center mx-auto md:mx-0 mb-4 md:mb-0`}
                     >
                       <service.icon className={`h-8 w-8 ${service.accentColor}`} />
                     </motion.div>
-                    <div className="flex-1">
+                    <div className="flex-1 text-center md:text-left">
                       <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">{service.title}</h3>
                       <p className="text-gray-600 leading-relaxed">{service.description}</p>
                     </div>

@@ -133,7 +133,7 @@ export default function Contact() {
             <span className="text-sm font-semibold text-green-900">Επικοινωνία</span>
           </motion.div>
           
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-6">
             Επικοινωνήστε μαζί μας
             <span className="block mt-2 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
               Για Επαγγελματική Υπηρεσία
