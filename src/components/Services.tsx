@@ -2,12 +2,13 @@
 
 import React from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Bug, Shield, CheckCircle, ArrowRight, Star, Zap, Droplets, Mouse } from 'lucide-react'
+import { CheckCircle, ArrowRight, Star, Bug, Zap, Shield } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const services = [
   {
-    icon: Bug,
+    icon: "/Απεντόμωση.avif",
     title: "Απεντόμωση",
     slug: "apentomosi",
     description: "Χρησιμοποιούμε προηγμένες τεχνικές και πιστοποιημένα προϊόντα για κάθε είδος εντόμου και χώρο, εξασφαλίζοντας άμεσα, διαρκή αποτελέσματα. Συμπεριλαμβάνει υποκαπνισμό για αποθήκες και βιομηχανίες.",
@@ -25,7 +26,7 @@ const services = [
     accentColor: "text-green-600"
   },
   {
-    icon: Droplets,
+    icon: "/Απολύμανση.avif",
     title: "Απολύμανση",
     slug: "apolymansi",
     description: "Παρέχουμε απολύμανση με πιστοποιημένα σκευάσματα τελευταίας γενιάς, δημιουργώντας φράγμα προστασίας για κάθε χώρο.",
@@ -43,7 +44,7 @@ const services = [
     accentColor: "text-emerald-600"
   },
   {
-    icon: Mouse,
+    icon: "/Μυοκτονία.avif",
     title: "Μυοκτονία",
     slug: "myoktonia",
     description: "Προσφέρουμε οικολογικές λύσεις για τρωκτικά με σύγχρονες τεχνικές και ασφαλή, πιστοποιημένα προϊόντα.",
@@ -61,7 +62,7 @@ const services = [
     accentColor: "text-lime-600"
   },
   {
-    icon: Shield,
+    icon: "/Απωθητικά.avif",
     title: "Απωθητικά",
     slug: "apothitika",
     description: "Εφαρμόζουμε φυσικά και χημικά απωθητικά για ζώα και έντομα σε σπίτια, επιχειρήσεις και κήπους.",
@@ -201,9 +202,15 @@ export default function Services() {
                     <motion.div
                       whileHover={{ rotate: 360, scale: 1.1 }}
                       transition={{ duration: 0.6 }}
-                      className={`flex-shrink-0 w-16 h-16 ${service.iconBg} rounded-2xl flex items-center justify-center mx-auto md:mx-0 mb-4 md:mb-0`}
+                      className={`flex-shrink-0 w-16 h-16 ${service.iconBg} rounded-2xl flex items-center justify-center mx-auto md:mx-0 mb-4 md:mb-0 overflow-hidden`}
                     >
-                      <service.icon className={`h-8 w-8 ${service.accentColor}`} />
+                      <Image
+                        src={service.icon}
+                        alt={service.title}
+                        width={40}
+                        height={40}
+                        className="object-contain brightness-75 contrast-110"
+                      />
                     </motion.div>
                     <div className="flex-1 text-center md:text-left">
                       <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">{service.title}</h3>
