@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Star, CheckCircle, ArrowRight, Bug, Play, Clock, Shield } from 'lucide-react'
+import { Star, CheckCircle, ArrowRight, Bug, Play, Clock, Shield, Phone } from 'lucide-react'
 import Link from 'next/link'
 import { R2_ASSETS } from '@/lib/r2-config'
 
@@ -139,14 +139,23 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="flex justify-center lg:justify-start mb-6 sm:mb-8 lg:mb-12"
+              className="flex flex-col items-center lg:items-start mb-6 sm:mb-8 lg:mb-12"
             >
               <Link
                 href="/contact"
-                className="group inline-flex items-center justify-center space-x-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-400 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-medium text-white shadow-lg hover:shadow-xl hover:shadow-green-500/25 transform hover:scale-105 transition-all duration-200"
+                className="group inline-flex items-center justify-center space-x-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-400 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-medium text-white shadow-lg hover:shadow-xl hover:shadow-green-500/25 transform hover:scale-105 transition-all duration-200 mb-3"
               >
                 <span>Επικοινωνία</span>
                 <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              
+              {/* Phone link */}
+              <Link
+                href="tel:94300800"
+                className="inline-flex items-center space-x-2 text-white/80 hover:text-white transition-colors duration-200 underline decoration-white/50 hover:decoration-white underline-offset-4"
+              >
+                <Phone className="h-4 w-4" />
+                <span className="text-sm sm:text-base">94 300 800</span>
               </Link>
             </motion.div>
 

@@ -78,45 +78,48 @@ const faqs = [
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 bg-gradient-to-r from-green-600 to-emerald-600 overflow-hidden">
+      {/* Hero Section - Minimal */}
+      <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-green-600 to-emerald-600 overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="inline-flex items-center justify-center space-x-2 rounded-full bg-white/20 backdrop-blur-sm px-4 py-2 mb-6">
-              <MessageCircle className="h-5 w-5 text-white" />
-              <span className="text-sm font-semibold text-white">Επικοινωνία</span>
+            <div className="inline-flex items-center justify-center space-x-2 rounded-full bg-white/20 backdrop-blur-sm px-3 py-1.5 mb-4">
+              <MessageCircle className="h-4 w-4 text-white" />
+              <span className="text-xs font-semibold text-white">Επικοινωνία</span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
               Επικοινωνήστε μαζί μας
-              <span className="block mt-2 text-green-200">
-                Για Επαγγελματική Υπηρεσία
-              </span>
             </h1>
             
-            <p className="text-lg sm:text-xl text-green-100 max-w-3xl mx-auto mb-8">
-              Η Clean Guard είναι εδώ για εσάς! Επικοινωνήστε μαζί μας για δωρεάν έλεγχο, 
-              προσφορά ή οποιαδήποτε ερώτηση έχετε για τις υπηρεσίες απεντόμωσης μας.
+            <p className="text-sm sm:text-base text-green-100 max-w-2xl mx-auto mb-6">
+              Η Clean Guard είναι εδώ για εσάς! Επικοινωνήστε μαζί μας για δωρεάν έλεγχο και προσφορά.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
                 href="tel:94300800"
-                className="inline-flex items-center space-x-2 bg-white text-green-600 px-8 py-4 rounded-full font-medium hover:bg-green-50 transition-colors"
+                className="inline-flex items-center space-x-2 bg-white text-green-600 px-6 py-3 rounded-full font-medium hover:bg-green-50 transition-colors text-sm"
               >
-                <Phone className="h-5 w-5" />
+                <Phone className="h-4 w-4" />
                 <span>Καλέστε 94 300 800</span>
               </Link>
               <Link
                 href="mailto:cgcpest@gmail.com"
-                className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm border border-white/30 text-white px-8 py-4 rounded-full font-medium hover:bg-white/30 transition-colors"
+                className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm border border-white/30 text-white px-6 py-3 rounded-full font-medium hover:bg-white/30 transition-colors text-sm"
               >
-                <Mail className="h-5 w-5" />
+                <Mail className="h-4 w-4" />
                 <span>Στείλτε Email</span>
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Contact Form */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ContactForm />
         </div>
       </section>
 
@@ -168,13 +171,6 @@ export default function ContactPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Contact Form */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ContactForm />
         </div>
       </section>
 

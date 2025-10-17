@@ -136,3 +136,4 @@ For urgent pest control situations:
 - **Available**: 24/7 emergency service
 - **Response**: Immediate dispatch
 - **Coverage**: All Cyprus areas
+
